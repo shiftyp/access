@@ -16,7 +16,10 @@ const Book = (book: typeof bookData[number], index: number) => {
 const Books = (books: typeof bookData) => {
     return `
         <ul>
-            ${books.map(book => Book(book, bookData.indexOf(book))).join('')}
+            ${books.map(book => {
+                const originalIndex = bookData.indexOf(book)
+                Book(book, originalIndex)
+            }).join('')}
         </ul>
     `
 }
