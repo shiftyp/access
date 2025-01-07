@@ -5,16 +5,18 @@ type Customer = {
     address: string
 }
 
-const Book = (book: typeof bookData[number]) => {
+const cart: (typeof bookData[number]) = []
+
+const Book = (book: typeof bookData[number], index: number) => {
     return `
-        <li>${book.title}</li>
+        <li data-index="${index}">${book.title}</li>
     `
 }
 
 const Books = (books: typeof bookData) => {
     return `
         <ul>
-            ${books.map(book => Book(book)).join('')}
+            ${books.map(book => Book(book, bookData.indexOf(book))).join('')}
         </ul>
     `
 }
